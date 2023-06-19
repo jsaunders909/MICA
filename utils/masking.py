@@ -42,7 +42,7 @@ class Struct(object):
 class Masking(nn.Module):
     def __init__(self, config):
         super(Masking, self).__init__()
-        ROOT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+        ROOT_DIR = config.mica_dir
         with open(f'{ROOT_DIR}/data/FLAME2020/FLAME_masks/FLAME_masks.pkl', 'rb') as f:
             ss = pickle.load(f, encoding='latin1')
             self.masks = Struct(**ss)

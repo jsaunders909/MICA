@@ -23,6 +23,9 @@ from yacs.config import CfgNode as CN
 cfg = CN()
 
 abs_mica_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+print('----------------- MICA PATH AT -----------------')
+print(abs_mica_dir)
+print('-------------------------------------------------')
 cfg.mica_dir = abs_mica_dir
 cfg.device = 'cuda'
 cfg.device_id = '0'
