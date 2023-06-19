@@ -132,6 +132,8 @@ def main(cfg, args):
             landmark_7 = landmark_51[[19, 22, 25, 28, 16, 31, 37]]
 
             dst = Path(args.o, name)
+            print(dst)
+
             dst.mkdir(parents=True, exist_ok=True)
             trimesh.Trimesh(vertices=mesh.cpu() * 1000.0, faces=faces, process=False).export(f'{dst}/mesh.ply')  # save in millimeters
             trimesh.Trimesh(vertices=mesh.cpu() * 1000.0, faces=faces, process=False).export(f'{dst}/mesh.obj')
