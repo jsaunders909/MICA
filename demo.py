@@ -114,13 +114,13 @@ def main(cfg, args):
     faces = mica.flameModel.generator.faces_tensor.cpu()
     Path(args.o).mkdir(exist_ok=True, parents=True)
 
-    if not os.path.exists('/root/.insightface/antelopev2'):
+    if not os.path.exists('/root/.insightface/models/antelopev2'):
         subprocess.call(
             'wget -O /root/.insightface/models/antelopev2.zip \"https://keeper.mpdl.mpg.de/f/2d58b7fed5a74cb5be83/?dl=1\"',
         shell=True)
         subprocess.call('unzip /root/.insightface/models/antelopev2.zip -d /root/.insightface/models/antelopev2',
                         shell=True)
-    if not os.path.exists('/root/.insightface/buffalo_l'):
+    if not os.path.exists('/root/.insightface/models/buffalo_l'):
         subprocess.call('wget -O ~/.insightface/models/buffalo_l.zip \"https://keeper.mpdl.mpg.de/f/8faabd353cfc457fa5c5/?dl=1\"'
                         , shell=True)
         subprocess.call('unzip ~/.insightface/models/buffalo_l.zip -d ~/.insightface/models/buffalo_l', shell=True)
