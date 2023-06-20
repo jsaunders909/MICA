@@ -114,7 +114,7 @@ def main(cfg, args):
     faces = mica.flameModel.generator.faces_tensor.cpu()
     Path(args.o).mkdir(exist_ok=True, parents=True)
 
-    if not os.path.exists('/root/.insightface/antelopev2.zip'):
+    if not os.path.exists('/root/.insightface/antelopev2'):
         subprocess.call(
             'wget -O /root/.insightface/models/antelopev2.zip \"https://keeper.mpdl.mpg.de/f/2d58b7fed5a74cb5be83/?dl=1\"',
         shell=True)
