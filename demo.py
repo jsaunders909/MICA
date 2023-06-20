@@ -36,6 +36,7 @@ from configs.config import get_cfg_defaults
 from datasets.creation.util import get_arcface_input, get_center, draw_on
 from utils import util
 from utils.landmark_detector import LandmarksDetector, detectors
+import subprocess
 
 
 def deterministic(rank):
@@ -114,11 +115,15 @@ def main(cfg, args):
     Path(args.o).mkdir(exist_ok=True, parents=True)
 
     if not os.path.exists('/root/.insightface/antelopev2.zip'):
-        os.system('wget -O ~/.insightface/models/antelopev2.zip \"https://keeper.mpdl.mpg.de/f/2d58b7fed5a74cb5be83/?dl=1\"')
-        os.system('unzip ~/.insightface/models/antelopev2.zip -d ~/.insightface/models/antelopev2')
+        subprocess.call(
+            'wget -O /root/.insightface/models/antelopev2.zip \"https://keeper.mpdl.mpg.de/f/2d58b7fed5a74cb5be83/?dl=1\"',
+        shell=True)
+        subprocess.call('unzip /root/.insightface/models/antelopev2.zip -d /root/.insightface/models/antelopev2',
+                        shell=True)
     if not os.path.exists('/root/.insightface/buffalo_l'):
-        os.system('wget -O ~/.insightface/models/buffalo_l.zip \"https://keeper.mpdl.mpg.de/f/8faabd353cfc457fa5c5/?dl=1\"')
-        os.system('unzip ~/.insightface/models/buffalo_l.zip -d ~/.insightface/models/buffalo_l')
+        subprocess.call('wget -O ~/.insightface/models/buffalo_l.zip \"https://keeper.mpdl.mpg.de/f/8faabd353cfc457fa5c5/?dl=1\"'
+                        , shell=True)
+        subprocess.call('unzip ~/.insightface/models/buffalo_l.zip -d ~/.insightface/models/buffalo_l', shell=True)
 
     app = LandmarksDetector(model=detectors.RETINAFACE)
 
